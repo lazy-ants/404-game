@@ -34,6 +34,13 @@ window.Game = window.Game || {};
     });
 
     Game.i18n.applyDOM();
+    // Вставляем путь логотипа в <svg> из единого источника Game.LOGO_PATH
+    const logoSvg = document.getElementById('brand-logo-svg');
+    if (logoSvg) {
+      const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      p.setAttribute('d', Game.LOGO_PATH);
+      logoSvg.appendChild(p);
+    }
     buildCharSelect();
     bindButtons();
     setState(S.MENU);
