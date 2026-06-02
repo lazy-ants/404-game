@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Tarakozyabras — endless runner</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="stage">
+      <canvas id="game"></canvas>
+
+      <!-- Main menu -->
+      <div id="menu" class="overlay">
+        <h1 data-i18n="title">Tarakozyabras</h1>
+        <p data-i18n="menu_subtitle">Endless run. Jump and duck to survive!</p>
+        <button id="btn-start" class="btn" data-i18n="btn_start">Play</button>
+        <p class="hint" data-i18n="hint_menu">Space / ↑ — jump · ↓ — duck · P — pause</p>
+      </div>
+
+      <!-- Character select -->
+      <div id="charselect" class="overlay hidden">
+        <h2 data-i18n="charselect_title">Choose your Tarakozyabra</h2>
+        <div id="char-list" class="char-list"></div>
+        <button id="btn-play" class="btn" data-i18n="btn_play">Go!</button>
+      </div>
+
+      <!-- Pause -->
+      <div id="pause" class="overlay hidden">
+        <h2 data-i18n="pause_title">Pause</h2>
+        <button id="btn-resume" class="btn" data-i18n="btn_resume">Continue</button>
+        <p class="hint" data-i18n="hint_pause">P / Esc — continue</p>
+      </div>
+
+      <!-- Game Over -->
+      <div id="gameover" class="overlay hidden">
+        <h2 data-i18n="gameover_title">Run Over</h2>
+        <div class="go-stats">
+          <span><span data-i18n="label_score">Score:</span> <strong id="final-score">0</strong></span>
+          <span class="coin-stat"><span data-i18n="label_coins">Coins:</span> <strong id="final-coins">0</strong></span>
+          <span><span data-i18n="label_round">Round:</span> <strong id="final-round">1</strong></span>
+        </div>
+
+        <div class="leaderboard">
+          <div class="lb-title" data-i18n="leaderboard">Leaderboard</div>
+          <ul id="leaderboard-list" class="lb-list"></ul>
+        </div>
+
+        <button id="btn-retry" class="btn" data-i18n="btn_retry">Play Again</button>
+      </div>
+    </div>
+
+    <script src="src/config.js"></script>
+    <script src="src/i18n.js"></script>
+    <script src="src/characters.js"></script>
+    <script src="src/player.js"></script>
+    <script src="src/input.js"></script>
+    <script src="src/background.js"></script>
+    <script src="src/obstacles.js"></script>
+    <script src="src/coins.js"></script>
+    <script src="src/sound.js"></script>
+    <script src="src/rounds.js"></script>
+    <script src="src/ui.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

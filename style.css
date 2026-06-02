@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: #1d2733;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Сцена держит логическое соотношение 900x360 и масштабируется под экран */
+#stage {
+  position: relative;
+  width: min(96vw, 900px);
+  aspect-ratio: 900 / 360;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+#game {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #e8f7ff;
+  touch-action: none;
+}
+
+/* Оверлеи-экраны поверх канваса */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(20, 28, 40, 0.82);
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay h1 {
+  font-size: clamp(28px, 6vw, 48px);
+}
+
+.overlay h2 {
+  font-size: clamp(22px, 4.5vw, 34px);
+}
+
+.overlay p {
+  font-size: clamp(13px, 2.4vw, 17px);
+  opacity: 0.9;
+}
+
+.hint {
+  opacity: 0.65;
+  font-size: clamp(11px, 2vw, 14px);
+}
+
+.stat {
+  font-size: clamp(15px, 3vw, 20px);
+}
+
+.btn {
+  margin-top: 6px;
+  padding: 12px 32px;
+  font-size: clamp(15px, 3vw, 20px);
+  font-weight: bold;
+  color: #fff;
+  background: #e94f37;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.15s;
+}
+
+.btn:hover {
+  background: #ff6a52;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Карточки выбора героя */
+.char-list {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 3px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.char-card:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.char-card.selected {
+  border-color: #e94f37;
+  background: rgba(233, 79, 55, 0.2);
+}
+
+.char-card canvas {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+}
+
+.char-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Game Over — статистика */
+.go-stats {
+  display: flex;
+  gap: 20px;
+  font-size: clamp(14px, 2.8vw, 18px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.go-stats strong {
+  color: #f9c74f;
+}
+
+.coin-stat::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 35% 35%, #ffe066, #f4c000);
+  border: 1.5px solid #b8860b;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
+
+/* Таблица рекордов */
+.leaderboard {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 8px 14px;
+  max-height: 160px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
+}
+
+.lb-title {
+  font-weight: bold;
+  font-size: clamp(13px, 2.4vw, 16px);
+  color: #f9c74f;
+  text-align: center;
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+
+.lb-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lb-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: clamp(11px, 2vw, 14px);
+  padding: 3px 4px;
+  border-radius: 5px;
+}
+
+.lb-row.lb-highlight {
+  background: rgba(249, 199, 79, 0.25);
+  font-weight: bold;
+}
+
+.lb-rank {
+  min-width: 26px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.lb-score {
+  font-weight: bold;
+  color: #f9c74f;
+  min-width: 50px;
+}
+
+.lb-detail {
+  opacity: 0.75;
+  font-size: 0.85em;
+}
+
+.lb-empty {
+  text-align: center;
+  opacity: 0.5;
+  font-size: 13px;
+  padding: 8px 0;
+}
