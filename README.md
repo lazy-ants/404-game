@@ -2,7 +2,7 @@
 
 An HTML5 endless runner game built with vanilla JS and Canvas API. No dependencies, no build step — just open `index.html` and play.
 
-![Game preview](https://raw.githubusercontent.com/lazy-ants/404-game/master/preview.png)
+![Game preview](preview.png)
 
 ## What is this game?
 
