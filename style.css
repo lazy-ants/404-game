@@ -137,6 +137,13 @@ body {
   font-size: 14px;
 }
 
+.brand-logo {
+  width: clamp(100px, 22vw, 180px);
+  fill: rgba(255, 255, 255, 0.45);
+  display: block;
+  margin-top: 4px;
+}
+
 /* Game Over — статистика */
 .go-stats {
   display: flex;
